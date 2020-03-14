@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
-    android:background="#504F4F">
+    android:background="#363636">
 
     <include
         layout="@layout/app_bar_main"
@@ -23,7 +23,7 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer"
 
-        android:background="#333232"
+        android:background="#363636"
         app:itemTextColor="#FFFFFF"
         app:itemIconTint="#FFFFFF"/>
 
