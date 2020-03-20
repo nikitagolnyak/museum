@@ -32,7 +32,7 @@ public class MapActivity extends Activity {
          */
         MapKitFactory.initialize(this);
         // Создание MapView.
-        setContentView(R.layout.info);
+        setContentView(R.layout.activity_info_main);
         super.onCreate(savedInstanceState);
         mapView = (MapView)findViewById(R.id.mapview);
 
