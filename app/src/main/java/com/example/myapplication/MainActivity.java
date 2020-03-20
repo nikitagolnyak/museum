@@ -20,10 +20,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+
+    public Button testButton; // тестовая кнопка для перехода между активностями
+    private View.OnClickListener testButtonOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // todo Обработка нажатия по кнопке
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         //                .setAction("Action", null).show();
         //   }
         //});
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -51,7 +61,14 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+        //обработчик кнопки для перехода между активностями
+        //testButton = (Button) findViewById(R.id.button2);
+        //testButton.setOnClickListener(testButtonOnClickListener);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
