@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.Activity;
 
 import com.yandex.mapkit.Animation;
+import com.yandex.mapkit.GeoObject;
 import com.yandex.mapkit.MapKitFactory;
 import com.yandex.mapkit.geometry.Point;
 import com.yandex.mapkit.map.CameraPosition;
@@ -16,6 +17,7 @@ public class MapActivity extends Activity {
     private final Point TARGET_LOCATION = new Point(59.945933, 30.320045);
 
     private MapView mapView;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class MapActivity extends Activity {
                 new CameraPosition(TARGET_LOCATION, 14.0f, 0.0f, 0.0f),
                 new Animation(Animation.Type.SMOOTH, 5),
                 null);
+        //mapView.getMap().selectGeoObject();
     }
 
     @Override

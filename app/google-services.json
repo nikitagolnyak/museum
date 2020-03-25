@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "41862916142",
+    "firebase_url": "https://museumbase-34c20.firebaseio.com",
+    "project_id": "museumbase-34c20",
+    "storage_bucket": "museumbase-34c20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41862916142:android:467b0ee438bac6052f57bf",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41862916142-1a2c1j7tsfavrp07hon4ma0e26ekhdrv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplication",
+            "certificate_hash": "aa6bc6c92b7fa8a25d057d9a5cc7905621d47981"
+          }
+        },
+        {
+          "client_id": "41862916142-cjsepuriffr3kmseikiupsat3rr672h6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgHAESttfT9ZhaiBbXG3ZvixCC4kdLB1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41862916142-cjsepuriffr3kmseikiupsat3rr672h6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
