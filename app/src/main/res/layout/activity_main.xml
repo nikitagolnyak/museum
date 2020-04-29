@@ -27,4 +27,24 @@
         app:itemTextColor="#FFFFFF"
         app:itemIconTint="#FFFFFF"/>
 
+    <!-- кнопки тестирования БД
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add"
+            android:text="Add" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/get"
+            android:text="Get" />
+    </LinearLayout> -->
+
+
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -14,6 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.myapplication.GroupActivity;
+import com.example.myapplication.Info_main;
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.MapActivity;
 import com.example.myapplication.R;
@@ -23,6 +26,8 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
 
     public Button testButton; // тестовая кнопка для перехода между активностями
+
+    public ImageView menuItem1;
 
 
     @Override
@@ -35,6 +40,21 @@ public class HomeFragment extends Fragment {
 
         final TextView textView = root.findViewById(R.id.text_home);
 
+
+        menuItem1 = root.findViewById(R.id.card_background);
+
+        View.OnClickListener menuItem1OnClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startInfoVievIntent = new Intent(getActivity(), GroupActivity.class); // MapActivity - представление с информацией об объекте
+                startActivity(startInfoVievIntent);
+            }
+        };
+
+        menuItem1.setOnClickListener(menuItem1OnClickListener);
+
+
+        /* копка перехода в пердставление с информацией об объекте
         testButton = (Button) root.findViewById(R.id.button2);
 
         View.OnClickListener testButtonOnClickListener = new View.OnClickListener() {
@@ -46,6 +66,8 @@ public class HomeFragment extends Fragment {
         };
 
         testButton.setOnClickListener(testButtonOnClickListener);
+        */
+
 
 
 

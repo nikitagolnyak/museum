@@ -3,12 +3,6 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.myapplication.Interface.ItemClickListener;
-import com.example.myapplication.ViewHolder.MenuViewHolder;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +13,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.myapplication.database.Group;
+import com.example.myapplication.database.ObjectDao;
+import com.example.myapplication.mock.MockAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,20 +31,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements MockAdapter.OnItemClickListener {
 
     private AppBarConfiguration mAppBarConfiguration;
 
-    FirebaseDatabase database;
-    DatabaseReference category;
-
-
-    RecyclerView recyler_menu;
-    RecyclerView.LayoutManager layoutManager;
-
+    private Button mAddBtn; // кнопка добавление в БД из представление send
+    private Button mGetBtn;
 
 
     @Override
@@ -56,14 +52,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //FloatingActionButton fab = findViewById(R.id.fab);
-        //fab.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //       Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-        //                .setAction("Action", null).show();
-        //   }
-        //});
+       
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -80,80 +69,49 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-        // работа с FireBase
-        database = FirebaseDatabase.getInstance();
-        category = database.getReference("Category");
+
+        final ObjectDao objectDao = ((AppDelegate) getApplicationContext()).getmMuseumDatabase().getObjectDao();
+
+        /* кнопки тестирования БД
+        mAddBtn = (findViewById(R.id.add));
+        mAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                objectDao.insertGroup(createGroups());
+            }
+        });
+
+        mGetBtn = (findViewById(R.id.get));
+        mGetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast(objectDao.getGroups());
+            }
+        });
+         */
 
 
-        //Загружаем меню
-        //recyler_menu = findViewById(R.id.recycler_menu);
-        //recyler_menu.setHasFixedSize(true);
-        //layoutManager = new LinearLayoutManager(this);
-        //recyler_menu.setLayoutManager(layoutManager);
 
-        //loadMenu();
     }
 
+    private List<Group> createGroups() {
 
+        List<Group> groups = new ArrayList<>(10);
+        for (int i = 0; i < 10; i++) {
+            groups.add(new Group(i, "name_of_group" + i));
+        }
 
-    /*
-    //запрос к FireBase
-    // Query query = FirebaseDatabase.getInstance()
-    //        .getReference()
-    //        .child("Category")
-    //        .limitToLast(2);
-
-    // загрузка меню
-
-
-    FirebaseRecyclerOptions<Category> options = new FirebaseRecyclerOptions.Builder<Category>()
-            .setQuery(query, Category.class)
-            .build();
-
-
-    private void loadMenu() {
-        FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull MenuViewHolder holder, int position, @NonNull Category model) {
-                holder.txtMenuName.setText(model.getName());
-                Picasso.with(getBaseContext()).load(model.getImage()).into(holder.imageView);
-                final Category clickItem = model;
-                holder.setItemClickListener(new ItemClickListener() {
-                    @Override
-                    public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(MainActivity.this, ""+clickItem.getName(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-
-            @NonNull
-            @Override
-            public MenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.menu_item, parent, false);
-                return new MenuViewHolder(view);
-            }
-        };
+        return groups;
     }
 
-    private void loadMenu() {
-        FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(Category.class, R.layout.menu_item, MenuViewHolder.class, category) {
-            @Override
-            protected void populateViewHolder(MenuViewHolder menuViewHolder, Category category, int i) {
-                menuViewHolder.txtMenuName.setText(category.getName());
-                Picasso.with(getBaseContext()).load(category.getImage()).into(menuViewHolder.imageView);
-                final Category clickItem = category;
-                menuViewHolder.setItemClickListener(new ItemClickListener() {
-                    @Override
-                    public void onClick(View view, int position, boolean isLongClick) {
-                        Toast.makeText(MainActivity.this, ""+clickItem.getName(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+    private void showToast(List<Group> groups) { // Тост для тестрировния отображения записей в БД
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0, size = groups.size(); i < size; i++) {
+            builder.append(groups.get(i).toString()).append("\n");
+        }
 
-            }
-        };
-        recyler_menu.setAdapter(adapter);
+        Toast.makeText(this, builder.toString(), Toast.LENGTH_SHORT).show();
     }
-     */
 
 
 
@@ -171,5 +129,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override // логика обрабоки клика по элементу списка
+    public void onItemClick(String id) {
+        Toast.makeText(this, "clikced "+id, Toast.LENGTH_SHORT).show();
     }
 }
