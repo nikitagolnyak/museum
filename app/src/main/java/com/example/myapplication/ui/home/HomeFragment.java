@@ -25,7 +25,7 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
 
-    public Button testButton; // тестовая кнопка для перехода между активностями
+    //public Button testButton; // тестовая кнопка для перехода между активностями
 
     public ImageView menuItem1;
 

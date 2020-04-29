@@ -38,12 +38,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements MockAdapter.OnItemClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
-    private Button mAddBtn; // кнопка добавление в БД из представление send
-    private Button mGetBtn;
+    //private Button mAddBtn; // кнопка добавление в БД из представление send
+    //private Button mGetBtn; // (кнопки для тестирования БД)
 
 
     @Override
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements MockAdapter.OnIte
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-       
+
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity implements MockAdapter.OnIte
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-
-        final ObjectDao objectDao = ((AppDelegate) getApplicationContext()).getmMuseumDatabase().getObjectDao();
+        //Переехал в GroupActivity
+        //final ObjectDao objectDao = ((AppDelegate) getApplicationContext()).getmMuseumDatabase().getObjectDao();
 
         /* кнопки тестирования БД
         mAddBtn = (findViewById(R.id.add));
@@ -94,6 +94,8 @@ public class MainActivity extends AppCompatActivity implements MockAdapter.OnIte
 
     }
 
+
+    /*Переехал в GroupActivity
     private List<Group> createGroups() {
 
         List<Group> groups = new ArrayList<>(10);
@@ -112,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements MockAdapter.OnIte
 
         Toast.makeText(this, builder.toString(), Toast.LENGTH_SHORT).show();
     }
+     */
 
 
 
@@ -131,8 +134,10 @@ public class MainActivity extends AppCompatActivity implements MockAdapter.OnIte
                 || super.onSupportNavigateUp();
     }
 
+    /* Переехал в GroupActivity
     @Override // логика обрабоки клика по элементу списка
     public void onItemClick(String id) {
         Toast.makeText(this, "clikced "+id, Toast.LENGTH_SHORT).show();
     }
+     */
 }

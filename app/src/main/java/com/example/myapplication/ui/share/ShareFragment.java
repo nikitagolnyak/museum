@@ -47,6 +47,12 @@ public class ShareFragment extends Fragment implements SwipeRefreshLayout.OnRefr
         mMockAdapter.setListener(mListener);
     }
 
+    public static ShareFragment newInstance() {
+
+        return new ShareFragment();
+    }
+
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
