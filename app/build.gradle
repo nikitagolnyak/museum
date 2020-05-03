@@ -11,6 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'SERVER_URL', '"https://android.museum.example.com/api/"'
     }
     buildTypes {
         release {
@@ -48,6 +49,9 @@ dependencies {
 
     implementation "android.arch.persistence.room:runtime:1.1.1"
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 
 
     testImplementation 'junit:junit:4.12'

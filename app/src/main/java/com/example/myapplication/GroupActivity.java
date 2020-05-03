@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,10 +13,14 @@ import com.example.myapplication.database.ObjectDao;
 import com.example.myapplication.mock.MockAdapter;
 import com.example.myapplication.ui.share.ShareFragment;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class GroupActivity extends AppCompatActivity implements MockAdapter.OnItemClickListener{
+
+    public ObjectDao containerDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +38,7 @@ public class GroupActivity extends AppCompatActivity implements MockAdapter.OnIt
 
 
         final ObjectDao objectDao = ((AppDelegate) getApplicationContext()).getmMuseumDatabase().getObjectDao();
+        containerDao = objectDao;
     }
 
     private List<Group> createGroups() {
@@ -57,5 +64,8 @@ public class GroupActivity extends AppCompatActivity implements MockAdapter.OnIt
     @Override // логика обрабоки клика по элементу списка
     public void onItemClick(String id) {
         Toast.makeText(this, "clikced "+id, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(GroupActivity.this, MapActivity.class);
+        startActivity(intent);
     }
+
 }

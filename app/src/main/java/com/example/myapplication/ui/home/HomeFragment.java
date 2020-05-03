@@ -25,8 +25,6 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
 
-    //public Button testButton; // тестовая кнопка для перехода между активностями
-
     public ImageView menuItem1;
 
 
@@ -54,19 +52,6 @@ public class HomeFragment extends Fragment {
         menuItem1.setOnClickListener(menuItem1OnClickListener);
 
 
-        /* копка перехода в пердставление с информацией об объекте
-        testButton = (Button) root.findViewById(R.id.button2);
-
-        View.OnClickListener testButtonOnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent startInfoVievIntent = new Intent(getActivity(), MapActivity.class);
-                startActivity(startInfoVievIntent);
-            }
-        };
-
-        testButton.setOnClickListener(testButtonOnClickListener);
-        */
 
 
 
