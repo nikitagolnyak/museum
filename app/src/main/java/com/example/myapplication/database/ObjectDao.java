@@ -37,6 +37,4 @@ public interface ObjectDao {
     @Query("select * from object inner join objectgroup on object.id = objectgroup.object_id where group_id = :groupId")
     List<Object> getObjectsFromGroup(int groupId);
 
-
-
 }
