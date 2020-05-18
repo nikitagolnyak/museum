@@ -7,7 +7,12 @@ import com.yandex.mapkit.GeoObject;
 import com.yandex.mapkit.MapKitFactory;
 import com.yandex.mapkit.geometry.Point;
 import com.yandex.mapkit.map.CameraPosition;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.yandex.mapkit.mapview.MapView;
 
@@ -17,6 +22,8 @@ public class MapActivity extends Activity {
     private final Point TARGET_LOCATION = new Point(59.945933, 30.320045);
 
     private MapView mapView;
+
+    private Button navButton;
     
 
     @Override
@@ -44,6 +51,20 @@ public class MapActivity extends Activity {
                 new Animation(Animation.Type.SMOOTH, 5),
                 null);
         //mapView.getMap().selectGeoObject();
+
+
+        final Uri addres = Uri.parse("yandexmaps://maps.yandex.ru/?ll=37.619902,55.753716&z=16&text=кафе%20с%20wi-fi");
+
+        navButton = findViewById(R.id.navigation_button);
+        navButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, addres);
+                startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override

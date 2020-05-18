@@ -91,9 +91,16 @@
                     android:paddingTop="3dp"
                     android:textColor="#333"
                     android:paddingBottom="10dp"
-                    android:layout_marginBottom="7dp"/>
+                    android:layout_marginBottom="5dp"/>
 
             </androidx.core.widget.NestedScrollView>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/navigation_button"
+                android:text="Построить маршрут">
+            </Button>
 
             <TextView
                 android:layout_width="match_parent"

@@ -12,7 +12,7 @@ public interface MuseumApi {
     @GET("groups/{id}")
     Call<Group> getGroup(@Path("id")int id);
 
-    @GET("groups/{id}")
+    @GET("objects/{id}")
     Call<Object> getObject(@Path("id")int id);
 
 }
